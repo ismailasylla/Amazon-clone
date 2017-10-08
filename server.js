@@ -32,33 +32,13 @@ app.engine('ejs', engine);
 // hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'ejs');
 
-// routes
-app.post('/create-user', function(req, res, next){
-//
-var user = new User();
-//
 
-user.profile.name = req.body.name;
-user.password= req.body.password;
-user.email= req.body.email;
+var mainRoutes = require('./routes/main');
+var userRoutes = require('./routes/user');
 
-//
-user.save(function(err){
+app.use(mainRoutes);
+app.use(userRoutes);
 
-    if(err) return next(err);
-    res.json('new User Created');
-});
-});
-
-// Routes
-app.get('/',(req,res)=>{
-    res.render('main/home.ejs');
-});
-
-app.get('/about', (req, res)=>{
-    res.render('main/about.ejs');
-
-});
 
 // listening port 
 
