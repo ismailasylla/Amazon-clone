@@ -33,7 +33,7 @@ var UserSchema = new mongoose.Schema({
 
 });
 
-
+// password hashing 
 
 UserSchema.pre('save', function(next){
 
@@ -45,7 +45,7 @@ UserSchema.pre('save', function(next){
         bcrypt.hash(user.password, salt, null, function(err,hash){
 
             if (err) return next(err);
-            user.password= hash;
+            user.password = hash;
             next();
         });
     });
@@ -54,13 +54,12 @@ UserSchema.pre('save', function(next){
 
 
 
-// create password in the database with the one the User types in
+// create password in the database and testing matching  with the one the User types in
 
 
 UserSchema.methods.comparePassword = function(password){
 
     return bcrypt.compareSync(password, this .password);
-
 
 };
 
