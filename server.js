@@ -7,6 +7,11 @@ var bodyParser = require('body-parser');
 // var hbs = require('hbs');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
+var session = require('express-session');
+var cookieParser = require('cookie-Parser');
+var flash = require('express-flash');
+
+
 
 // local import 
 var User = require('./models/user');
@@ -27,6 +32,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "Americangoogle1"
+}));
+app.use(flash());
+
+
 
 app.engine('ejs', engine);
 // hbs.registerPartials(__dirname + '/views/partials')

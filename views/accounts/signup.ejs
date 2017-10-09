@@ -1,39 +1,41 @@
 <%-layout('main') -%>
 
-<div class="container py-3 signup">
-        <div class="row">
-            <div class="col-md-6 col-lg-4 mx-auto">
-                    <div class="card card-body">
-                        <h3 class="text-center mb-4">Sign-up</h3>
-                        <div class="alert alert-danger">
-                            <a class="close" data-dismiss="alert" href="#">×</a>Password is too short.
-                        </div>
-                        <form method="post">
-                            <div class="form-group has-error">
-                                <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="text">
-                            </div>
-                            <div class="form-group has-success">
-                                <input class="form-control input-lg" placeholder="Password" name="password" value="" type="password">
-                            </div>
-                            <!-- <div class="form-group has-success">
-                                <input class="form-control input-lg" placeholder="Confirm Password" name="password" value="" type="password">
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control input-lg">
-                                    <option selecterd="">Sequrity Question</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control input-lg" placeholder="Sequrity Answer" name="answer" value="" type="text">
-                            </div>
-                            <div class="checkbox">
-                                <label class="small">
-                                    <input name="terms" type="checkbox">I have read and agree to the <a href="#">terms of service</a>
-                                </label>
-                            </div> -->
-                            <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
-                        </form>
-                    </div>
+<div class="container signup">
+    
+    <div class="col-sm-6 col-sm-offset-3">
+    
+        <h1><span class="fa fa-sign-in"></span> Signup</h1>
+    
+        <!-- show any messages that come back with authentication -->
+        <% if (errors.length > 0) { %>
+            <div class="alert alert-danger"><%= errors %>
+                <a type="button" class="close" data-dismiss="alert" aria-label="close">X</a>
+                <span aria-hidden="true">&times;</span>
             </div>
-        </div>
+        <% } %>
+
+        <!-- LOGIN FORM -->
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+    
+            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+        </form>
+    
+        <hr>
+    
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Or go <a href="/">home</a>.</p>
+    
     </div>
+    
+    </div>
+
+
+
