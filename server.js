@@ -14,11 +14,12 @@ var flash = require('express-flash');
 
 
 // local import 
+var secret = require('./config/secret');
 var User = require('./models/user');
 
 // connection to the database
 var app= express();
-mongoose.connect('mongodb://localhost:27017/Amazon',(err,db)=>{
+mongoose.connect(secret.database,(err,db)=>{
     if (err){
         return console.log('unable to connect to mongoDB server');
     }
@@ -35,7 +36,7 @@ app.use(bodyParser.urlencoded({
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: "Americangoogle1"
+    secret: secret.secretKey
 }));
 app.use(flash());
 
@@ -55,10 +56,10 @@ app.use(userRoutes);
 
 // listening port 
 
-app.listen(3000 , function(err){
+app.listen(secret.port , function(err){
 
     if(err) throw err;
 
-    console.log('Server is Running on port 3000');
+    console.log('Server is Running on port' + secret.port);
 
 });

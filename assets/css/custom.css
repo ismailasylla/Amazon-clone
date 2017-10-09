@@ -6,6 +6,13 @@ body {
 
 .signup{
     margin-top:100px;
-    margin-left: 300px;
-    
+  
+      
 }
+
+@media(min-width: 768px) {
+    .field-label-responsive {
+      padding-top: .5rem;
+      text-align: right;
+    }
+  }
