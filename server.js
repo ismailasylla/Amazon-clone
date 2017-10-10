@@ -15,6 +15,7 @@ var passport = require('passport');
 // local import 
 var secret = require('./config/secret');
 var User = require('./models/user');
+var Category = require('./models/category');
 
 
 // connection to the database
@@ -45,7 +46,15 @@ app.use(passport.session());
 app.use(function(req, res, next){
     res.locals.user = req.user;
     next();
-})
+});
+
+app.use(function(req, res, next){
+    Category.find({}, function(err, categories){
+        if(err) return next(err);
+        res.locals.categories = categories;
+        next();
+    }); 
+});
 
 
 
