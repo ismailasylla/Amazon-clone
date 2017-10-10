@@ -16,6 +16,7 @@ var passport = require('passport');
 var secret = require('./config/secret');
 var User = require('./models/user');
 
+
 // connection to the database
 var app= express();
 mongoose.connect(secret.database,(err,db)=>{
@@ -55,9 +56,11 @@ app.set('view engine', 'ejs');
 
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
+var adminRoutes = require('./routes/admin');
 
 app.use(mainRoutes);
 app.use(userRoutes);
+app.use(adminRoutes);
 
 
 // listening port 
