@@ -23,7 +23,14 @@ router.get('/products/:id', (req, res, next)=> {
     });
 });
 
-
+router.get('/product/:id', function(req, res, next){
+    Product.findById({ _id: req.params.id }, function(err, product){
+        if(err) return next();
+        res.render('main/product', {
+            product: product
+        });
+    });
+});
 
 module.exports = router;
 
