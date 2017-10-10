@@ -3,12 +3,22 @@
 <div class="container nabar-gab">
    <div class="row">
         <div class="col-sm-6 col-md-4">
-            <img src="<%= user.profile.picture %>" alt="" class="img-circle img-esponssive img-center">
+            <img src="<%= user.profile.picture %>" alt="" class="img-circle img-responssive img-center">
+            <a href="/edit-profile" class="btn-class  btn btn-primary" style="    border-top-left-radius: 19px!important;">Edit Profile</a>
 
-            <br>
+            <hr>
             <p>Name: <%= user.profile.name %></p>
             <p>Email: <%= user.email %></p>
-            <p>Address: <%= user.address %></p>
+
+            <% if(user.address === "" || typeof user.address === 'undefined') { %>
+                <p>Address: <span class="alert alert-primary" role="alert" style="font-weight:bold;">You Have No Address!</span></p>
+
+            <% } else { %>
+            
+                <p>Address: <%= user.address %></p>
+
+            <% } %>
+
         </div>   
    </div> 
 </div>

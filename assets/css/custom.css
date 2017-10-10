@@ -87,3 +87,8 @@ body {
         border-color: #ffc107;
         background-color: #ffc107;
     }
+
+    .img-circle {
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
