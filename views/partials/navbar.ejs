@@ -10,12 +10,27 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/signup">Signup</a>
+        <%if (!user){ %>
+          <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarDropdown1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Signup/Login</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1" style="margin-left: -30px;">
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/signup">Signup</a></li>
+              </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-        </ul>
+        
+        <% } else { %>  
+        
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="navbarDropdown1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.profile.name %></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1" style="margin-left: -75px;">
+                  <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+            </li>
+
+            <% } %>
+      </ul>
     </div>
-  </nav>
+  </nav> 
