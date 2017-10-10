@@ -10,7 +10,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1" style="margin-left: -30px;">
               <% for (var i = 0; i < categories.length ; i++) { %>
 
-                <li><a class="dropdown-item" href="#"><%= categories[i].name %></a></li>
+                <li><a class="dropdown-item" href="/products/<%= categories[i]._id %>"><%= categories[i].name %></a></li>
 
                 <% } %>
             </ul>
