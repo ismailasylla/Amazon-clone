@@ -1,4 +1,15 @@
 <%-layout('main') -%>
 
-<h1>Welcome : <%= user.profile.name %></h1>
+<div class="container nabar-gab">
+   <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <img src="<%= user.profile.picture %>" alt="" class="img-circle img-esponssive img-center">
+
+            <br>
+            <p>Name: <%= user.profile.name %></p>
+            <p>Email: <%= user.email %></p>
+            <p>Address: <%= user.address %></p>
+        </div>   
+   </div> 
+</div>
 

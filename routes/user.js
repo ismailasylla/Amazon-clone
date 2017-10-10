@@ -4,6 +4,7 @@ var passport = require('passport');
 var passportConf = require('../config/passport');
 
 
+
 router.get('/login', (req, res)=>{
     if(req.user) return res.redirect('/');
     res.render('accounts/login', {
@@ -37,6 +38,7 @@ router.post('/signup', function(req, res, next)
     user.profile.name = req.body.name;
     user.email        = req.body.email;
     user.password     = req.body.password;
+    user.profile.picture = user.gravatar();
 
     User.findOne({ email: req.body.email}, (err, existingUser)=>
     {
@@ -50,7 +52,10 @@ router.post('/signup', function(req, res, next)
             user.save((err, user)=>
             {
                 if(err) return next(err);
-            return res.redirect('/');
+                req.logIn(user, function(){
+                    if(err) return next(err);
+                    res.redirect('/profile');
+                });
             });
         }
     });
